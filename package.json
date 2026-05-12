@@ -21,10 +21,16 @@
   },
   "homepage": "https://github.com/florensiuspancagati/hirely-backend#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "multer": "^2.1.1"
+    "joi": "^18.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.2",
+    "multer": "^2.1.1",
+    "nanoid": "^5.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

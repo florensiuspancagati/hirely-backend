@@ -1,8 +1,16 @@
-import app from './app.js';
+import 'dotenv/config';
+import app from './server/index.js';
+import mongodbConnection from './configs/mongodb.js'
 
-const port = process.env.PORT || 3000;
-const host = process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0';
+const port = process.env.PORT;
+const host = process.env.HOST;
 
-app.listen(port, () => {
-  console.log(`SERVER BERJALAN DI http://${host}:${port}`);
-});
+const startServer = async() => {
+  await mongodbConnection();
+
+  app.listen(port, () => {
+    console.log(`SERVER BERJALAN DI http://${host}:${port}`);
+  });
+};
+
+startServer();
