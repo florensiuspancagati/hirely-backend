@@ -1,18 +1,13 @@
 import express from 'express';
 
 import authentications from '../services/authentications/authentications-routes.js';
-// user
-// analyze
+import users from '../services/users/users-routes.js';
+import analyses from '../services/analyses/analyses-routes.js';
+
 const router = express.Router();
 
-// router.post('/auth/register');
-// router.post('/auth/login');
-// router.post('/auth/logout');
-// router.post('/auth/me');
-
-// router.post('/analyze');
-// router.get('/analyze/:id');
-
 router.use('/', authentications);
+router.use('/', users);
+router.use('/', analyses);
 
 export default router;

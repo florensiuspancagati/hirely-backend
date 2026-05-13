@@ -1,5 +1,5 @@
 import AuthenticationRepositories from './authentications-repositories.js';
-import UserRepositories from '../users/user-repositories.js';
+import UserRepositories from '../users/users-repositories.js';
 import TokenManager from '../../security/token-manager.js';
 import apiResponse from '../../utils/apiResponse.js';
 import InvariantError from '../../exceptions/invariant-error.js';

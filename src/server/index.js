@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({ origin: '*' }));
+app.use('/public', express.static('public'));
 
 app.use('/hirely-api/v1', routes);
 

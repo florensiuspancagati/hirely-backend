@@ -2,6 +2,7 @@ import AuthenticationModel from '../../models/authentications-model.js';
 
 class AuthenticationRepositories {
   async addRefreshToken(token) {
+    // create Analyses colection di mongodb
     await AuthenticationModel.create({ token });
   }
 

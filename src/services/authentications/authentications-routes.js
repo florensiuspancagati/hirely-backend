@@ -1,7 +1,7 @@
 import express from 'express';
 import validation from '../../middlewares/validation.js';
 import { login, refreshToken, logout } from './authentications-controllers.js';
-import { postAuthenticationPayloadSchema, putAuthenticationPayloadSchema, deleteAuthenticationPayloadSchema } from './authentications-validator.js';
+import { postAuthenticationPayloadSchema, putAuthenticationPayloadSchema, deleteAuthenticationPayloadSchema } from './authentications-validators.js';
 
 const router = express.Router();
 

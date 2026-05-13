@@ -9,7 +9,7 @@ const startServer = async() => {
   await mongodbConnection();
 
   app.listen(port, () => {
-    console.log(`SERVER BERJALAN DI http://${host}:${port}`);
+    console.log(`Server run at { http://${host}:${port} }`);
   });
 };
 

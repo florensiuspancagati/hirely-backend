@@ -1,14 +1,15 @@
 import { nanoid } from 'nanoid';
 import bcrypt from 'bcrypt';
 
-import User from '../../models/users-model.js';
+import UserModel from '../../models/users-model.js';
 
 class UserRepositories {
   async createUser({ username, password, fullname, email }) {
     const id = nanoid(16);
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({
+    // create User colection di mongodb
+    const user = await UserModel.create({
       id,
       username,
       fullname,
@@ -22,17 +23,17 @@ class UserRepositories {
   }
 
   async verifyNewUsername(username) {
-    const user = await User.findOne({ username });
+    const user = await UserModel.findOne({ username });
 
     return !!user;
   }
 
   async getUserById(id) {
-    return await User.findOne({ id });
+    return await UserModel.findOne({ id });
   }
 
   async verifyUserCredential(username, password) {
-    const user = await User.findOne({ username });
+    const user = await UserModel.findOne({ username });
 
     if (!user) {
       return null;
@@ -51,7 +52,7 @@ class UserRepositories {
   }
 
   async getUsersByUsername(username) {
-    return await User.find(
+    return await UserModel.find(
       // regex itu pencarian string. option i itu case insensitive.
       {
         username: { $regex: username, $options: 'i' },
