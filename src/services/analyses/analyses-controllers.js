@@ -6,7 +6,7 @@ import extractUploadedFile from '../../utils/extractUploadedFile.js';
 // ai service
 import aiForAnalysesCV from '../ai/ai-services.js';
 
-const uploadCV = async (req, res, next) => {
+const analysesCV = async (req, res, next) => {
   const { jobDescription } = req.body;
   const file = req.file;
   
@@ -32,14 +32,14 @@ const uploadCV = async (req, res, next) => {
     matchedSkills: aiAnalysesResult.matchedSkills,
     missingSkills: aiAnalysesResult.missingSkills,
     improvements: aiAnalysesResult.improvements,
-    recommendedSkill: aiAnalysesResult.recommendedSkills,
+    recommendedSkills: aiAnalysesResult.recommendedSkills,
   });
 
   if (!analysis) {
-    return next(new InvariantError('Gagal menganalisis CV.'));
+    return next(new InvariantError('Gagal menganalisis CV'));
   }
 
-  return apiResponse(res, 201, 'Berhasil menganalisis CV.', analysis);
+  return apiResponse(res, 201, 'Berhasil menganalisis CV', analysis);
 };
 
-export { uploadCV };
+export { analysesCV };

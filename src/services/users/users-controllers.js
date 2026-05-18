@@ -8,7 +8,7 @@ const createUser = async (req, res, next) => {
 
   const isUsernameExist = await UsersRepositories.verifyNewUsername(username);
   if (isUsernameExist) {
-    return next(new InvariantError('Gagal menambahkan user. Username sudah digunakan.'));
+    return next(new InvariantError('Gagal menambahkan user. Username sudah digunakan'));
   }
 
   const user = await UsersRepositories.createUser({

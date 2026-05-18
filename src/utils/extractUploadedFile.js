@@ -1,5 +1,5 @@
 import fs from 'fs';
-import pdfParser from 'pdf-parser';
+import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
 
 import InvariantError from '../exceptions/invariant-error.js'
@@ -9,8 +9,14 @@ const extractUploadedFile = async (filePath, mimeType) => {
 
   // parsing pdf
   if (mimeType === 'application/pdf') {
-    const data = await pdfParser(fileBuffer);
-    return data.text;
+    // ternyata ada perubahan library
+    // const data = await PDFParse(fileBuffer);
+    // return data.text;
+
+    const parser = new PDFParse({ data: fileBuffer });
+    const result = await parser.getText();
+    await parser.destroy();
+    return result.text;
   }
 
   // parsing docx

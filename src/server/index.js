@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 
 import routes from '../routes/index.js'
-// import eror handler
+import ErrorHandlerMiddleware from '../middlewares/error-handler.js';
 
 const app = express();
 
@@ -12,6 +12,6 @@ app.use('/public', express.static('public'));
 
 app.use('/hirely-api/v1', routes);
 
-// app use eror handler
+app.use(ErrorHandlerMiddleware);
 
 export default app;

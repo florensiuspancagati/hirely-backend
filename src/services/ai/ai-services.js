@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 const aiForAnalysesCV = async ({ extractedFile, jobDescription }) => {
   // sementara mock dulu
-  console.log(extractedFile);
-  console.log(jobDescription);
+  // console.log(extractedFile);
+  // console.log(jobDescription);
 
   return {
     score: 78,

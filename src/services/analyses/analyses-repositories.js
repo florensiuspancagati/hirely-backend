@@ -24,7 +24,7 @@ class AnalysesRepositories {
     });
 
     return {
-      id: analyses.id,
+      analyses
     };
   }
 }

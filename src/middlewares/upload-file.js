@@ -1,5 +1,5 @@
 import multer from 'multer';
-import InvariantError from '../exceptions/invariant-error';
+import InvariantError from '../exceptions/invariant-error.js';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -24,7 +24,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({
+const multerUploadMiddleware = multer({
   storage,
   fileFilter,
   limits: {
@@ -32,4 +32,4 @@ const upload = multer({
   },
 });
 
-export default upload;
+export default multerUploadMiddleware;
