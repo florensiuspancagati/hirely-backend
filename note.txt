@@ -1,0 +1,11 @@
+menambahkan eslint,  untuk membantu konsistensi penulisan kode dan menemukan error.
+menambahkan joi
+menambahkan bcrypt
+menambahkan dotenv
+menambahkan jsonwebtoken
+menambahkan mongodb
+menambahkan mongoose
+menambahkan multer
+menambahkan nanoid
+menambahkan pdf-parser
+menambahkan mammoth (docx)
