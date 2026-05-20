@@ -10,4 +10,12 @@ router.use('/', authentications);
 router.use('/', users);
 router.use('/', analyses);
 
+// for keep the server running
+router.get('/ping', async (req, res) => {
+  return res.status(200).json({
+    status: 'success',
+    message: 'Server is OK',
+  });
+});
+
 export default router;
