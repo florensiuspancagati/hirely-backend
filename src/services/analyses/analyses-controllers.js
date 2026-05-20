@@ -9,6 +9,9 @@ import aiForAnalysesCV from '../ai/ai-services.js';
 const analysesCV = async (req, res, next) => {
   const { jobDescription } = req.body;
   const file = req.file;
+
+  // console.log('REQ FILE:', req.file);
+  // console.log('REQ BODY:', req.body);
   
   if (!file) {
     return next(new InvariantError('Anda harus unggah CV.'));
