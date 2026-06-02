@@ -32,23 +32,23 @@ class UserRepositories {
     return await UserModel.findOne({ id });
   }
 
-  async verifyUserCredential(username, password) {
-    const user = await UserModel.findOne({ username });
+  async verifyUserCredential(email, password) {
+    const chekedEmail = await UserModel.findOne({ email });
 
-    if (!user) {
+    if (!chekedEmail) {
       return null;
     }
 
     const isPasswordMatch = await bcrypt.compare(
       password,
-      user.password
+      chekedEmail.password
     );
 
     if (!isPasswordMatch) {
       return null;
     }
 
-    return user.id;
+    return chekedEmail.id;
   }
 
   async getUsersByUsername(username) {
