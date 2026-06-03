@@ -1,4 +1,5 @@
 import fs from 'fs';
+import fsPromises from 'fs/promises';
 import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
 
@@ -28,4 +29,12 @@ const extractUploadedFile = async (filePath, mimeType) => {
   throw new InvariantError('Format file tidak didukung.');
 };
 
-export default extractUploadedFile;
+const deleteUploadedFile = async (filePath) => {
+  try {
+    await fsPromises.unlink(filePath);
+  } catch (err) {
+    console.error('Gagal menghapus file:', err.message);
+  }
+};
+
+export { extractUploadedFile, deleteUploadedFile };

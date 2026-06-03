@@ -33,6 +33,31 @@ const analysesSchema = new mongoose.Schema(
       required: true,
     },
 
+    fullname: {
+      type: String,
+      required: true,
+    },
+
+    position: {
+      type: String,
+      required: true,
+    },
+
+    education: {
+      type: String,
+      required: true,
+    },
+
+    experience: {
+      type: String,
+      required: true,
+    },
+
+    skill: {
+      type: String,
+      required: true,
+    },
+
     score: {
       type: Number,
     },
