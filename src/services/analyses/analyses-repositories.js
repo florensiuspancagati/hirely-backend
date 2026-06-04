@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import AnalysesModel from '../../models/analyses-model.js';
 
 class AnalysesRepositories {
-  async uploadCV({ filename, filepath, mimetype, jobDescription, extractedText, fullname, position, education, experience, skill, score, summary, matchedSkills, missingSkills, improvements, recommendedSkills }) {
+  async uploadCV({ filename, filepath, mimetype, jobDescription, extractedText, fullname, position, education, experience, skill, cv_text, score, isMatch, summary, cvSkills, jdSkills, matchedSkills, missingSkills, recommendedSkills }) {
     const id = nanoid(16);
     
     // create Analyses colection di mongodb
@@ -19,11 +19,14 @@ class AnalysesRepositories {
       education,
       experience,
       skill,
+      cv_text,
       score,
+      isMatch,
       summary,
+      cvSkills,
+      jdSkills,
       matchedSkills,
       missingSkills,
-      improvements,
       recommendedSkills,
       status: 'completed',
     });

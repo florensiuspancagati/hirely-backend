@@ -22,10 +22,19 @@ const analysesCV = async (req, res, next) => {
   try {
     // parsing filenya.
     const extractedFile = await extractUploadedFile(file.path, file.mimetype);
+
+    // gabungin ke lima input untuk di analisis ke AI (saran dari mentor)
+    const cv_text = `
+      fullname: ${fullname ?? ''}
+      position: ${position ?? ''}
+      education: ${education ?? ''}
+      experience: ${experience ?? ''}
+      skill: ${skill ?? ''}
+    `.trim();
   
     // analisis dengan ai.
     // sementara, 5 param lainnya tidak di pakai dulu: fullname, position, education, experience, skill
-    const aiAnalysesResult = await aiForAnalysesCV({ extractedFile, jobDescription });
+    const aiAnalysesResult = await aiForAnalysesCV({ cv_text, jobDescription });
   
     // panggil fungsi uploadCV dari AnalysesRepositories. Ini untuk simpan ke mongodb
     const analysis = await AnalysesRepositories.uploadCV({
@@ -39,11 +48,15 @@ const analysesCV = async (req, res, next) => {
       education,
       experience,
       skill,
+      cv_text,
+
       score: aiAnalysesResult.score,
+      isMatch: aiAnalysesResult.isMatch,
       summary: aiAnalysesResult.summary,
+      cvSkills: aiAnalysesResult.cv_skills,
+      jdSkills: aiAnalysesResult.jd_skills,
       matchedSkills: aiAnalysesResult.matchedSkills,
       missingSkills: aiAnalysesResult.missingSkills,
-      improvements: aiAnalysesResult.improvements,
       recommendedSkills: aiAnalysesResult.recommendedSkills,
     });
   

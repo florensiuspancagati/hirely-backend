@@ -58,19 +58,30 @@ const analysesSchema = new mongoose.Schema(
       required: true,
     },
 
+    cv_text: {
+      type: String,
+      required: true,
+    },
+
     score: {
       type: Number,
+    },
+
+    isMatch: {
+      type: Boolean,
     },
 
     summary: {
       type: String,
     },
 
+    cvSkills: [String],
+
+    jdSkills: [String],
+
     matchedSkills: [String],
 
     missingSkills: [String],
-
-    improvements: [String],
 
     recommendedSkills: [String],
 
